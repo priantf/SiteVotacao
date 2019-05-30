@@ -12,18 +12,13 @@ public class VotoDAOImpl implements VotoDAO{
 
 	@Override
 	public Voto computaVoto(Voto voto) {
-		//session = ServicoEntityManager.getSessionFactory().openSession();
-		try {
-			session.beginTransaction();
-			session.save(voto);
-			session.getTransaction().commit();
-			session.close();
-			return voto;
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			session.getTransaction().rollback();
-		}
-		return null;
+		session = ServicoEntityManager.getSessionFactory().openSession();
+		session.beginTransaction();
+		session.save(voto);
+		session.getTransaction().commit();
+		session.close();
+		
+		return voto;
 	}
 
 	@Override

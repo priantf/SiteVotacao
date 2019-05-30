@@ -18,7 +18,7 @@
 	<div>
 	<% Eleitor e = (Eleitor)request.getSession().getAttribute("eleitorLogado"); 
 	%>
-	<p>Olá <%= e.getCategoria() + e.getNome() %></p>
+	<p>Olá <%= e.getCategoria().toLowerCase() + " " + e.getNome() %></p>
 		<nav id="menu">
 		    <ul>
 		        <li><a href="/SiteVotacao/Votacao.action">Votar</a></li>

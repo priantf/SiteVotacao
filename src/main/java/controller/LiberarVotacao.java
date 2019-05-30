@@ -31,11 +31,15 @@ public class LiberarVotacao extends HttpServlet{
 		EleitorDAOImpl eleitorDao = new EleitorDAOImpl();
 		
 		String titulo = req.getParameter("titulo");
-		System.out.println("TITULO "+titulo);
+		ServletContext sc = req.getServletContext();
+		try {	
+			eleitorDao.liberarVotacao(titulo);
+			Eleitor eleitor = eleitorDao.findByTitulo(titulo);
+			req.getSession().setAttribute("votacao",eleitor);
+			sc.getRequestDispatcher("/html/liberar_votacao.jsp").forward(req, resp); 
+		}catch(Exception e) {
 			
-			
-		eleitorDao.liberarVotacao(titulo);
-		//req.getSession().setAttribute("votacao",1);
+		}
 
 		
 	}

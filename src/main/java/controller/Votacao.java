@@ -21,6 +21,10 @@ public class Votacao extends HttpServlet{
         
         ServletContext sc = req.getServletContext();
         try{
+        	Eleitor eleitor = (Eleitor)req.getSession().getAttribute("eleitorLogado"); 
+        	if (eleitor.getLiberado() == 1) {
+        		System.out.println("LIBERADOOO" + eleitor.getLiberado());
+        	}
         	sc.getRequestDispatcher("/html/votacao.jsp").forward(req, resp);            
         } catch (Exception e){}
     }
@@ -36,19 +40,24 @@ public class Votacao extends HttpServlet{
 		VotoDAOImpl sVoto = new VotoDAOImpl();
 		
 		Integer numero_candidato = Integer.parseInt(req.getParameter("voto"));
-		// Eleitor e = (Eleitor)req.getSession().getAttribute("eleitorLogado"); 
-		// String titulo = e.getTitulo();
+		Eleitor eleitor = (Eleitor)req.getSession().getAttribute("eleitorLogado"); 
 		
-		Candidato c = new Candidato();
-		//c.setNome("Lula");
-		//c.setNumero(numero_candidato);
-		Voto v = new Voto();
-		//v.setId(0);
-		v.setCandidato(numero_candidato);
-		
-		// sVoto.computaVoto(v);
+		ServletContext sc = req.getServletContext();
+		if (eleitor.getLiberado() == 1) {
+			// String titulo = e.getTitulo();
+			
+			Candidato c = new Candidato();
+			//c.setNome("Lula");
+			//c.setNumero(numero_candidato);
+			Voto v = new Voto();
+			//v.setId(0);
+			v.setCandidato(numero_candidato);
+			
+			sVoto.computaVoto(v);
 
-		//ServicoVotoImpl sVoto = new ServicoVotoImpl(entityManager);
+			//ServicoVotoImpl sVoto = new ServicoVotoImpl(entityManager);
+		}
+		
 		
 	}
 

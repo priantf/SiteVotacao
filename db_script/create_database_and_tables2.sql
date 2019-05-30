@@ -42,7 +42,7 @@ CREATE TABLE `eleicao`.`eleitor` (
 insert into eleitor values("00000", "admin", "Luiz", "12/11/1998", 1, "21/10/2015", "10", "10", "ELEITOR", 0, 0);
 insert into eleitor values("11111", "admin", "Cristiano Ronaldo", "12/11/1998", 1, "21/10/2015", "10", "10", "MESARIO", 0, 0);
 UPDATE eleitor e SET e.liberacao = 0 WHERE e.titulo = "00000";
-
+select * from eleitor;
 CREATE TABLE `eleicao`.`candidato` (
   `numero` INT NOT NULL COMMENT '',
   `nome` VARCHAR(45) NULL COMMENT '',

@@ -125,7 +125,7 @@ public class Eleitor {
 		this.categoria = categoria;
 	}
 
-	public int isLiberado() {
+	public int getLiberado() {
 		return liberado;
 	}
 
@@ -133,7 +133,7 @@ public class Eleitor {
 		this.liberado = liberado;
 	}
 
-	public int isJaVotou() {
+	public int getJaVotou() {
 		return jaVotou;
 	}
 
