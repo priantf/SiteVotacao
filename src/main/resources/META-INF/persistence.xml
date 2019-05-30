@@ -1,0 +1,27 @@
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+             http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+  version="2.1">
+  <!-- O nome da unidade de persistência é referenciado na criação da fábrica
+       de gerenciadores de entidade.-->  
+  <persistence-unit name="eleicao">
+    <description> Crud do Site de Votacao</description>
+    <!-- Provedor da implementação das especificações de interface do JPA -->
+    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider> 
+    <class>model.Eleitor</class> 
+    <class>model.Voto</class>
+    <class>model.Candidato</class>
+    <class>model.Municipio</class>
+    <class>model.UF</class>
+    <properties>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/eleicao" />
+      <property name="javax.persistence.jdbc.user" value="root" />
+      <property name="javax.persistence.jdbc.password" value="SenhaForte.123" /><!-- SenhaForte.123 -->
+      <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+      <property name="hibernate.show_sql" value="true" />
+      <property name="hibernate.hbm2ddl.auto" value="update" />
+    </properties>
+  </persistence-unit>
+</persistence>

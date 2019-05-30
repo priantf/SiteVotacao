@@ -1,13 +1,36 @@
 create database eleicao;
-create user luiz@'%' identified by '123';
-grant all on votacao.* to luiz@'%';
 
 use eleicao;
 
-create table usuario(titulo varchar(100), senha varchar(100), categoria varchar(10));
-insert into usuario values("11111", "admin", "MESARIO");
-insert into usuario values("22222", "admin", "ELEITOR");
-insert into usuario values("00000", "admin", "CHEFE");
+CREATE TABLE eleitor (
+  titulo VARCHAR(100) NOT NULL,
+  senha VARCHAR(45) NULL,
+  nome VARCHAR(45) NOT NULL,
+  nasc DATE NOT NULL,
+  municipio VARCHAR(45) NOT NULL,
+  categoria VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`titulo`));
+  
+insert into eleitor values("11111", "admin", "MESARIO");
+insert into eleitor values("22222", "admin", "ELEITOR");
+insert into eleitor values("00000", "admin", "CHEFE");
 
-drop table votacao;
-drop user luiz@'%';
+CREATE TABLE candidato (
+  numero VARCHAR(45) NOT NULL,
+  nome VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`numero`));
+  
+insert into candidato values (13, 'Lula');
+insert into candidato values (17, 'Bolsonaro');
+
+CREATE TABLE voto (
+    idvoto INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    numero VARCHAR(45) NOT NULL,
+    CONSTRAINT fk_numero FOREIGN KEY (numero)
+        REFERENCES candidato (numero)
+);
+
+drop table voto;
+desc voto;
+select * from voto;
+insert into voto values (1, "13");
