@@ -11,16 +11,27 @@ public class Candidato {
 	
 	@Id
 	@Column(name = "numero", nullable = false)
-	private String numero;
+	private Integer numero;
 	
 	@Column(name = "nome", nullable = false)
 	private String nome;
+	
+	@Column(name = "partido", nullable = false)
+	private String partido;
 
-	public String getNumero() {
+	public String getPartido() {
+		return partido;
+	}
+
+	public void setPartido(String partido) {
+		this.partido = partido;
+	}
+
+	public Integer getNumero() {
 		return numero;
 	}
 
-	public void setNumero(String numero) {
+	public void setNumero(Integer numero) {
 		this.numero = numero;
 	}
 
@@ -32,4 +43,10 @@ public class Candidato {
 		this.nome = nome;
 	}
 
+	public Candidato getInfo(Integer numero) {
+		CandidatoDAOImpl cdao = new CandidatoDAOImpl();
+		Candidato c = cdao.buscar(numero);
+		return c;
+		
+	}
 }

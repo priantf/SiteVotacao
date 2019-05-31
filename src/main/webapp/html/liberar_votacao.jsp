@@ -9,12 +9,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<script src="./js/jquery-3.3.1.min.js"></script>
+<script src="./js/script.js"></script>
+
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Liberar Votaçao</title>
 </head>
 <body>
 	
-	<a href="/SiteVotacao">Sair</a>
+	<button id="sair">Sair</button>
 	<a href="javascript:window.history.go(-1)">Voltar</a>
 	<div>
 	<% Eleitor e = (Eleitor)request.getSession().getAttribute("votacao"); 
@@ -27,7 +30,7 @@
 		<button id="myBtn">Habilitar</button>
 		<% if (e != null){ %>
 		<%if (e.getLiberado() == 1){ %>
-			<p style="color:green;"> Cidadao <%= e.getNome() + " de título " + e.getTitulo() + " está liberado para votar!" %></p>
+			<p id="saida" style="color:green;"> Cidadao <%= e.getNome() + " de título " + e.getTitulo() + " está liberado para votar!" %></p>
 		<% }else{%>
 			<p style="color:red;"> Cidadao <%= e.getNome() + " de título " + e.getTitulo() + " está impedido de votar por alguma razao!" %></p>
 		<%}}else if (request.getParameter("titulo") != null){ %>
@@ -37,4 +40,5 @@
 	</form>
 	</div>
 </body>
+
 </html>

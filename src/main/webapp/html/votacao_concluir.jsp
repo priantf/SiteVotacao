@@ -1,4 +1,5 @@
 <%@page import="model.Eleitor"%>
+<%@page import="model.Candidato"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% 
     String contexto = request.getContextPath();
@@ -11,13 +12,12 @@
 <meta charset="ISO-8859-1">
 
 <title>Area de Votacao</title>
-<script src="/SiteVotacao/js/jquery-3.3.1.min.js"></script>
+<script src="./js/jquery-3.3.1.min.js"></script>
 <script>
-$(document).ready(function(){
-    $('#botao').on('click', function(){
-    	$('#saida').html("Voto computado com sucesso!");
-    });
-});
+document.getElementById("voto").addEventListener("input", exibeInfo);
+function exibeInfo() {
+	  
+}
 </script>
 </head>
 
@@ -25,15 +25,22 @@ $(document).ready(function(){
 	<a href="javascript:window.history.go(-1)">Voltar</a>
 	<div class="container">
 	<% Eleitor e = (Eleitor)request.getSession().getAttribute("eleitorLogado"); 
+	Candidato c = (Candidato)request.getSession().getAttribute("candidato"); 
 	%>
 		<form class="baseForm" action="Votacao.action" method="post">
-		<% if (e.getLiberado() == 1 && e.getJaVotou() == 0){ %>
+		<% 
+		if (c != null){
+		%>
+		<p> <%= c.getNome() + " - " + c.getPartido() + " - " + c.getNumero()%> </p>
+		<%}
+		 if (e.getLiberado() == 1 && e.getJaVotou() == 0){ %>
 			<h2>VOTE NO SEU CANDIDATO</h2>
 			<div>
 				<label>Digite o número do seu candidato</label> <input type="text"
-					name="voto" id="voto">
+					name="voto" id="voto" value=<%=c.getNumero()%> disabled>
 			</div>
-			<button id="botao">Votar</button>
+			<button id="botao">Concluir</button>
+			<a id="botao" href="javascript:window.history.go(-1)"">Voltar</a>
 			<div id='saida' style="color: green"></div>
 			<%}else if (e.getJaVotou() == 1){ %>
 			<p> Seu voto já foi computado! Caso ainda nao tenha votado contate o mesário!</p>

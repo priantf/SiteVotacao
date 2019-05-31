@@ -1,3 +1,5 @@
+create database eleicao;
+use eleicao;
 CREATE TABLE `eleicao`.`uf` (
   `id_uf` INT NOT NULL AUTO_INCREMENT COMMENT '',
   `nome` VARCHAR(45) NULL COMMENT '',
@@ -41,20 +43,35 @@ CREATE TABLE `eleicao`.`eleitor` (
 
 insert into eleitor values("00000", "admin", "Luiz", "12/11/1998", 1, "21/10/2015", "10", "10", "ELEITOR", 0, 0);
 insert into eleitor values("11111", "admin", "Cristiano Ronaldo", "12/11/1998", 1, "21/10/2015", "10", "10", "MESARIO", 0, 0);
+insert into eleitor values("22222", "admin", "Messi", "12/11/1998", 1, "21/10/2015", "10", "10", "CHEFE", 0, 0);
+
 UPDATE eleitor e SET e.liberacao = 0 WHERE e.titulo = "00000";
 select * from eleitor;
 CREATE TABLE `eleicao`.`candidato` (
   `numero` INT NOT NULL COMMENT '',
   `nome` VARCHAR(45) NULL COMMENT '',
+  `partido` VARCHAR(45) NULL COMMENT '',
   PRIMARY KEY (`numero`)  COMMENT '');
 
-insert into candidato values(51, "Joaozinho Jose");
+insert into candidato values(53, "Joaozinho Jose", "PPPP");
+insert into candidato values(14, "Fernando Fernandes", "PQP");
 
 CREATE TABLE `eleicao`.`voto` (
   `idvoto` INT NOT NULL AUTO_INCREMENT COMMENT '',
-  `voto` INT NOT NULL COMMENT '',
+  `numero` INT NOT NULL COMMENT '',
   PRIMARY KEY (`idvoto`)  COMMENT '');
 
-insert into voto values(1, 51);
+drop table voto;
+insert into voto values(null, 53);
+insert into voto values(null, 53);
+insert into voto values(null, 53);
+insert into voto values(null, 53);
+insert into voto values(null, 53);
+insert into voto values(null, 53);
+insert into voto values(null, 14);
+insert into voto values(null, 14);
+insert into voto values(null, 14);
+insert into voto values(null, 14);
 
-select * from eleitor;
+select count(numero) from voto where numero=14;
+select * from voto;

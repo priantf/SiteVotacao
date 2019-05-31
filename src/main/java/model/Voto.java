@@ -1,30 +1,24 @@
 package model;
 
-import javax.json.Json;
-import javax.json.JsonObject;
-import javax.json.JsonObjectBuilder;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
  * @author CASA
  *
  */
-@Entity
-@Table(name = "voto")
+@Entity(name="voto")
 public class Voto {
 	@Id
-	//@Column(name="idvoto")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@Column(name = "idvoto")
 	private int id;
 	
-	@JoinColumn(name = "numero")
+	@Column(name = "numero")
 	private Integer candidato;
 	
 	public Integer getCandidato() {

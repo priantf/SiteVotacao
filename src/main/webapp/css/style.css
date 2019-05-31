@@ -1,1 +1,27 @@
 @charset "ISO-8859-1";
+
+@import url('https://fonts.googleapis.com/css?family=ZCOOL+KuaiLe&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Arvo&display=swap');
+
+h1{
+	font-family: 'ZCOOL KuaiLe', cursive;
+}
+h2{
+	font-family: 'Arvo', serif;
+}
+
+@media screen and (max-width: 1600px) {
+
+  img{
+  	width: 100%;
+  	height: 200px;
+  	position: fixed;
+  left: 0;
+  bottom: 0;
+  }
+}
+@media screen and (max-width: 800px) {
+    body {
+    	background-color: blue;
+
+}

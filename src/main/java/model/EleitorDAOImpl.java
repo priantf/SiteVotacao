@@ -67,6 +67,27 @@ public class EleitorDAOImpl implements EleitorDAO{
         }
     	
     }
+    
+	@Override
+	public boolean jaVotou(String titulo) {
+		entityManager = ServicoEntityManager.getEntityManager();
+    	try{
+    		Query query = entityManager.createNativeQuery("UPDATE eleitor e SET e.ja_votou = 1 "
+                    + "WHERE e.titulo = :titulo", Eleitor.class);
+    		query.setParameter("titulo", titulo);
+    		entityManager.getTransaction().begin();
+    		query.executeUpdate();
+
+    		entityManager.getTransaction().commit();
+
+            return true;
+        }           
+        catch (Exception e)
+        {
+        	System.out.print(e);
+            return false;
+        }
+	}
 
     @Override
     public Eleitor update(Eleitor usuarioAnt, Eleitor usuarioAt) {
@@ -82,12 +103,5 @@ public class EleitorDAOImpl implements EleitorDAO{
     public boolean delete(Long id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-
-	@Override
-	public boolean jaVotou(String titulo) {
-		// TODO Auto-generated method stub
-		return false;
-	}
     
 }

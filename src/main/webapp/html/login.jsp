@@ -9,9 +9,14 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Jutsu Eleitoral</title>
+<link rel="stylesheet" type="text/css" href="./css/style.css">
+
 </head>
 <body>
+
+<h1> Seja bem vindo ao site oficial de votaçao</h1>
+
 	<form class="baseForm" action="Autenticador.action" method="post">
 		<label class="formLabel"> Nome de Usuário: <input
 			name="nomeUsuario" type="text" required
@@ -20,5 +25,9 @@
 			type="password" required class="formInput formTextInput">
 		</label> <input type="submit" value="Entrar" class="submitButton">
 	</form>
+
 </body>
+	<footer class="column">
+		<img alt="" src="./img/logo.png">
+	</footer>
 </html>

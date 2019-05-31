@@ -35,7 +35,7 @@ public class LiberarVotacao extends HttpServlet{
 		try {	
 			eleitorDao.liberarVotacao(titulo);
 			Eleitor eleitor = eleitorDao.findByTitulo(titulo);
-			req.getSession().setAttribute("votacao",eleitor);
+			req.getSession().setAttribute("votacao", eleitor);
 			sc.getRequestDispatcher("/html/liberar_votacao.jsp").forward(req, resp); 
 		}catch(Exception e) {
 			
